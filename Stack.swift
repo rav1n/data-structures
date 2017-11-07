@@ -12,35 +12,24 @@ enum StackError: Error {
     case emptyStack
 }
 
-
-class Stack {
-    private var top = -1
-    private var array = [Int]()
+class Stack<Element> {
+    private var array = [Element]()
     
-    func push(element: Int) {
-        self.top += 1
-        array.insert(element, at: self.top)
+    func push(element: Element) {
+        array.append(element)
     }
     
-    func pop() throws -> Int {
-        
-        if isEmpty() {throw StackError.emptyStack}
-        
-        let element = array.remove(at: self.top)
-        self.top -= 1
+    func pop() throws -> Element? {
+        if array.isEmpty {throw StackError.emptyStack}
+        let element = array.removeLast()
         return element
     }
     
-    func peek() throws -> Int {
-        
-        if isEmpty() {throw StackError.emptyStack}
-        
-        return array[self.top]
+    func top() throws -> Element? {
+        if array.isEmpty {throw StackError.emptyStack}
+        return array.last
     }
-    
-    private func isEmpty() -> Bool {
-        return (self.top == -1)
-    }
+
 }
 
 
