@@ -12,14 +12,14 @@ enum StackError: Error {
     case emptyStack
 }
 
-class Stack<Element> {
+struct Stack<Element> {
     private var array = [Element]()
     
-    func push(element: Element) {
+    mutating func push(element: Element) {
         array.append(element)
     }
     
-    func pop() throws -> Element? {
+    mutating func pop() throws -> Element? {
         if array.isEmpty {throw StackError.emptyStack}
         let element = array.removeLast()
         return element
@@ -30,6 +30,9 @@ class Stack<Element> {
         return array.last
     }
 
+    func description() {
+        print(self.array, separator: "-->", terminator: "\n")
+    }
 }
 
 
