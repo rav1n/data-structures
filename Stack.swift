@@ -33,7 +33,7 @@ struct Stack<Element> : CustomStringConvertible {
     
     public mutating func pop() throws -> Element? {
         if array.isEmpty { throw StackError.emptyStack }
-        let element = array.removeLast()
+        let element = array.popLast()
         return element
     }
     
