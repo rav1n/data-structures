@@ -14,7 +14,7 @@ enum StackError: Error {
 
 struct Stack<Element> : CustomStringConvertible {
 
-    private var array = [Element]()
+    private var array : [Element]
     
     //MARK: Initializer
     // Initializes stack with given array elements
